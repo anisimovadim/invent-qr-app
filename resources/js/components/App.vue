@@ -1,14 +1,16 @@
 <template>
-<div class="container">
-    <main-page></main-page>
-</div>
+    <main-panel></main-panel>
+    <div class="container">
+        <main-page></main-page>
+    </div>
 </template>
 
 <script>
 import MainPage from "./pages/MainPage.vue";
+import MainPanel from "./layouts/MainPanel.vue";
 export default {
     name: "App",
-    components: {MainPage}
+    components: {MainPage, MainPanel}
 
 }
 </script>
