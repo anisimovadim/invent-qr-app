@@ -12,7 +12,7 @@
                 </div>
                 <div class="grid-box2">
                     <button class="btn btn-dark">Добавить инвентарь +</button>
-                    <button class="btn btn-dark">Распечатать всё</button>
+                    <button class="btn btn-light">Печать</button>
                 </div>
             </div>
         </div>

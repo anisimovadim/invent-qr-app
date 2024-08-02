@@ -1,6 +1,6 @@
 <template>
-<div class="box">
-    <block-inventory></block-inventory>
+<div class="box flex-grow-1">
+    <block-inventory v-for="inventory in inventories" :inventory="inventory"></block-inventory>
 </div>
 </template>
 
@@ -9,7 +9,14 @@ import MainPanel from "../layouts/MainPanel.vue";
 import BlockInventory from "../ui/BlockInventory.vue";
 export default {
     name: "MainPage",
-    components: {MainPanel, BlockInventory}
+    components: {MainPanel, BlockInventory},
+    data(){
+        return{
+            inventories: [
+                {name: 'testName', number_invent:101393219}
+            ]
+        }
+    }
 }
 </script>
 

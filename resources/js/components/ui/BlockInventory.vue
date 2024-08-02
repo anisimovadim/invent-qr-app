@@ -1,12 +1,15 @@
 <template>
 <div class="block">
-    dasdasd
+    {{inventory.name}}
 </div>
 </template>
 
 <script>
 export default {
-    name: "BlockInventory"
+    name: "BlockInventory",
+    props:{
+        inventory: Object
+    }
 }
 </script>
 
