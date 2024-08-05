@@ -1,6 +1,20 @@
 <template>
 <div class="box flex-grow-1">
-    <block-inventory v-for="inventory in inventories" :inventory="inventory"></block-inventory>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Номер инвент.</th>
+            <th>Тип</th>
+            <th>Модель</th>
+            <th>Кабинет</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="inventory in inventories">
+            <block-inventory :inventory="inventory"></block-inventory>
+        </tr>
+        </tbody>
+    </table>
 </div>
 </template>
 
@@ -18,7 +32,8 @@ export default {
                     model: 'acer m43',
                     character:'',
                     type:'notebook',
-                    cabinet: 104
+                    cabinet: 104,
+                    src_qrcode:''
                 }
             ]
         }

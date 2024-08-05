@@ -1,7 +1,8 @@
 <template>
-<div class="block">
-    {{inventory.number_invent}}
-</div>
+    <td>{{inventory.number_invent}}</td>
+    <td>{{inventory.type}}</td>
+    <td>{{inventory.model}}</td>
+    <td>{{inventory.cabinet}}</td>
 </template>
 
 <script>
@@ -13,6 +14,16 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style>
+.info{
+    gap: 20px;
+}
 </style>
+<!--{-->
+<!--number_invent:101393219,-->
+<!--model: 'acer m43',-->
+<!--character:'',-->
+<!--type:'notebook',-->
+<!--cabinet: 104,-->
+<!--src_qrcode:''-->
+<!--}-->
