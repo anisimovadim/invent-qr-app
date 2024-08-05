@@ -13,7 +13,13 @@ export default {
     data(){
         return{
             inventories: [
-                {name: 'testName', number_invent:101393219}
+                {
+                    number_invent:101393219,
+                    model: 'acer m43',
+                    character:'',
+                    type:'notebook',
+                    cabinet: 104
+                }
             ]
         }
     }

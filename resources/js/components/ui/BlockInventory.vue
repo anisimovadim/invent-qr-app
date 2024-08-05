@@ -1,6 +1,6 @@
 <template>
 <div class="block">
-    {{inventory.name}}
+    {{inventory.number_invent}}
 </div>
 </template>
 
