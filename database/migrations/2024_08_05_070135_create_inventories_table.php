@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('number_invent');
             $table->integer('cabinet');
             $table->text('character');
+            $table->string('src_qrcode');
             $table->timestamps();
         });
     }
