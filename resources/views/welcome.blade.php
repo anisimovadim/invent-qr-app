@@ -10,6 +10,6 @@
 </head>
 <body>
 <div id="app"></div>
-@vite('resources/js/app.js', 'resources/js/bootstrap.bundle.js')
+@vite(['resources/js/app.js', 'resources/js/bootstrap.bundle.js'])
 </body>
 </html>

@@ -11,7 +11,7 @@
                     </select>
                 </div>
                 <div class="grid-box2">
-                    <button class="btn btn-dark">Добавить инвентарь +</button>
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#createInventoryModal">Добавить инвентарь +</button>
                     <button class="btn btn-light">Печать</button>
                 </div>
             </div>
@@ -21,8 +21,10 @@
 </template>
 
 <script>
+import ModalBlock from "../ui/ModalBlock.vue";
 export default {
-    name: "MainPanel"
+    name: "MainPanel",
+    components:{ModalBlock}
 }
 </script>
 
