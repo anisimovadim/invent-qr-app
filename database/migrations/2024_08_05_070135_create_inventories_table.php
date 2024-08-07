@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('model');
             $table->string('type');
-            $table->integer('number_invent');
+            $table->integer('number_invent')->unique();
             $table->integer('cabinet');
             $table->text('character');
             $table->text('status');
