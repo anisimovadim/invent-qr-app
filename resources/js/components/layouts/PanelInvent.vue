@@ -1,12 +1,17 @@
 <template>
 <div class="panel shadow">
-ds
+    <div class="qrcode">
+        <img :src="inventory['src_qrcode']" alt="">
+    </div>
 </div>
 </template>
 
 <script>
 export default {
-    name: "PanelInvent"
+    name: "PanelInvent",
+    props:{
+        inventory: Object
+    }
 }
 </script>
 

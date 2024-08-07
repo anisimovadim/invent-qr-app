@@ -5,8 +5,8 @@
         <div class="alert alert-danger" v-if="errorMessage">{{errorMessage}}</div>
     </div>
     <div class="container d-flex justify-content-between">
-        <main-page></main-page>
-        <panel-invent></panel-invent>
+        <main-page :inventories="inventories" @select-inventoryf="selectInventoryFunc"></main-page>
+        <panel-invent :inventory="selectInventory"></panel-invent>
     </div>
     <modal-block :inventory="inventory" @submit-form="submitForm"></modal-block>
 </template>
@@ -31,19 +31,31 @@ export default {
                 cabinet:''
             },
             success:'',
-            errorMessage:''
+            errorMessage:'',
+            inventories:[],
+            selectInventory:{}
         }
     },
+    mounted() {
+        this.getInventories();
+    },
     methods:{
+        getInventories(){
+            axios.get('/api/inventories')
+                .then(res=>{
+                    this.inventories = res.data
+                })
+        },
         submitForm(){
             console.log(this.inventory);
             axios.post('/api/create/inventory', this.inventory)
                 .then(response=>{
                     this.errorMessage=''
-                    this.success= response.data
+                    this.success= response.data;
+                    this.getInventories();
                     setTimeout(()=>{
                         this.success= ''
-                    }, 5000)
+                    }, 5000);
                     console.log(response)
                 })
                 .catch(error=>{
@@ -54,6 +66,10 @@ export default {
                     }, 5000)
                     console.log(error)
                 })
+        },
+        selectInventoryFunc(number_invent){
+            this.selectInventory = this.inventories.find(el=>el.number_invent===number_invent);
+            console.log(this.selectInventory)
         }
     }
 

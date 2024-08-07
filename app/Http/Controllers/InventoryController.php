@@ -10,6 +10,9 @@ use Endroid\QrCode\Label\Label;
 
 class InventoryController extends Controller
 {
+    public function show(){
+        return response()->json(Inventory::all());
+    }
     public function create(Request $request){
         $status = '';
         if ($request->status == 'good'){

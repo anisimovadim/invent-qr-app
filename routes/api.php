@@ -18,4 +18,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/inventories', [\App\Http\Controllers\InventoryController::class, 'show']);
 Route::post('/create/inventory', [\App\Http\Controllers\InventoryController::class, 'create']);

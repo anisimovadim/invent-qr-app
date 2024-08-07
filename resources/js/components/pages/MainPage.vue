@@ -11,7 +11,7 @@
         </thead>
         <tbody>
         <tr v-for="inventory in inventories">
-            <block-inventory :inventory="inventory"></block-inventory>
+            <block-inventory :inventory="inventory" @select-inventory="selectInventoryF"></block-inventory>
         </tr>
         </tbody>
     </table>
@@ -24,18 +24,26 @@ import BlockInventory from "../ui/BlockInventory.vue";
 export default {
     name: "MainPage",
     components: {MainPanel, BlockInventory},
-    data(){
-        return{
-            inventories: [
-                {
-                    number_invent:101393219,
-                    model: 'acer m43',
-                    character:'',
-                    type:'notebook',
-                    cabinet: 104,
-                    src_qrcode:''
-                }
-            ]
+    props:{
+        inventories: Array
+    },
+    // data(){
+    //     return{
+    //         inventories: [
+    //             {
+    //                 number_invent:101393219,
+    //                 model: 'acer m43',
+    //                 character:'',
+    //                 type:'notebook',
+    //                 cabinet: 104,
+    //                 src_qrcode:''
+    //             }
+    //         ]
+    //     }
+    // }
+    methods:{
+        selectInventoryF(number_invent){
+            this.$emit('selectInventoryf', number_invent)
         }
     }
 }
