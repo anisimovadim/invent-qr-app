@@ -37,7 +37,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-outline-dark w-100">Сохранить</button>
+                        <button type="submit" class="btn btn-outline-dark w-100" data-bs-dismiss="modal" aria-label="Close">Сохранить</button>
                     </div>
                 </form>
             </div>
