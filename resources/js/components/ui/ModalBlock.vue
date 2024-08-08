@@ -22,7 +22,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="character" class="form-label">Описание инвентаря</label>
-                            <textarea name="character" id="character" v-model="inventory.character" cols="30" rows="5" class="form-control"></textarea>
+                            <textarea name="character" id="character" required v-model="inventory.character" cols="30" rows="5" class="form-control"></textarea>
                         </div>
                         <div class="mb-3">
                             <select name="status" id="status" class="form-select" v-model="inventory.status">
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-outline-dark w-100" data-bs-dismiss="modal" aria-label="Close">Сохранить</button>
+                        <button type="submit" class="btn btn-outline-dark w-100">Сохранить</button>
                     </div>
                 </form>
             </div>
