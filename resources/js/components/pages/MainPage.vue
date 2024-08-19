@@ -11,7 +11,9 @@
         </thead>
         <tbody>
         <tr v-for="inventory in inventories">
-            <block-inventory :inventory="inventory" @select-inventory="selectInventoryF"></block-inventory>
+            <block-inventory :inventory="inventory"
+                             @select-inventory="selectInventoryF"
+                             @click-trash="deleteEmit"></block-inventory>
         </tr>
         </tbody>
     </table>
@@ -23,6 +25,7 @@ import MainPanel from "../layouts/MainPanel.vue";
 import BlockInventory from "../ui/BlockInventory.vue";
 export default {
     name: "MainPage",
+    emits: ["selectInventoryf", "deleteInventory"],
     components: {MainPanel, BlockInventory},
     props:{
         inventories: Array
@@ -44,6 +47,9 @@ export default {
     methods:{
         selectInventoryF(number_invent){
             this.$emit('selectInventoryf', number_invent)
+        },
+        deleteEmit(inventory_id){
+            this.$emit('deleteInventory', inventory_id)
         }
     }
 }

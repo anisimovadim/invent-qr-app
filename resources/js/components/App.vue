@@ -5,7 +5,9 @@
         <div class="alert alert-danger" v-if="errorMessage">{{errorMessage}}</div>
     </div>
     <div class="container d-flex justify-content-between">
-        <main-page :inventories="inventories" @select-inventoryf="selectInventoryFunc"></main-page>
+        <main-page :inventories="inventories"
+                   @select-inventoryf="selectInventoryFunc"
+                   @delete-inventory="deleteInventoryFunc"></main-page>
         <panel-invent :inventory="selectInventory"></panel-invent>
     </div>
     <modal-block :inventory="inventory" @submit-form="submitForm"></modal-block>
@@ -70,6 +72,23 @@ export default {
         selectInventoryFunc(number_invent){
             this.selectInventory = this.inventories.find(el=>el.number_invent===number_invent);
             console.log(this.selectInventory)
+        },
+        deleteInventoryFunc(inventory_id){
+            console.log(inventory_id)
+            axios.post('/api/delete/inventory', {id:inventory_id})
+                .then(res=>{
+                    this.success = res.data;
+                    this.getInventories();
+                    setTimeout(()=>{
+                        this.success= ''
+                    }, 5000);
+                })
+                .catch(err=>{
+                    this.errorMessage = err.data;
+                    setTimeout(()=>{
+                        this.errorMessage= ''
+                    }, 5000)
+                })
         }
     }
 

@@ -10,7 +10,7 @@
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="number_invent" class="form-label">Номер инвентаря</label>
-                            <input type="text" placeholder="Например: ноутбук" v-model="inventory.number_invent" id="type" class="form-control" required>
+                            <input type="text" v-model="inventory.number_invent" id="type" class="form-control" required>
                         </div>
                         <div class="mb-3">
                             <label for="type" class="form-label">Введите тип</label>
