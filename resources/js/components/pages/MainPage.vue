@@ -11,9 +11,12 @@
         </thead>
         <tbody>
         <tr v-for="inventory in inventories">
-            <block-inventory :inventory="inventory"
-                             @select-inventory="selectInventoryF"
-                             @click-trash="deleteEmit"></block-inventory>
+            <block-inventory
+                :inventory="inventory"
+                :select-eye="selectEye"
+                @select-inventory="selectInventoryF"
+                @click-trash="deleteEmit">
+            </block-inventory>
         </tr>
         </tbody>
     </table>
@@ -30,23 +33,17 @@ export default {
     props:{
         inventories: Array
     },
-    // data(){
-    //     return{
-    //         inventories: [
-    //             {
-    //                 number_invent:101393219,
-    //                 model: 'acer m43',
-    //                 character:'',
-    //                 type:'notebook',
-    //                 cabinet: 104,
-    //                 src_qrcode:''
-    //             }
-    //         ]
-    //     }
-    // }
+    data(){
+        return{
+            selectEye: 0
+        }
+    },
     methods:{
         selectInventoryF(number_invent){
-            this.$emit('selectInventoryf', number_invent)
+            this.selectEye = number_invent;
+            this.$emit('selectInventoryf', number_invent);
+        },
+        selectEyeInvent(id){
         },
         deleteEmit(inventory_id){
             this.$emit('deleteInventory', inventory_id)

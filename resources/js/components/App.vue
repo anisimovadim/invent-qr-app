@@ -11,6 +11,7 @@
         <panel-invent :inventory="selectInventory"></panel-invent>
     </div>
     <modal-block :inventory="inventory" @submit-form="submitForm"></modal-block>
+    <print-modal :cabinets="getCabinets"></print-modal>
 </template>
 
 <script>
@@ -18,10 +19,12 @@ import MainPage from "./pages/MainPage.vue";
 import MainPanel from "./layouts/MainPanel.vue";
 import PanelInvent from "./layouts/PanelInvent.vue";
 import ModalBlock from "./ui/ModalBlock.vue";
+import PrintModal from "./ui/PrintModal.vue";
 import axios from "axios";
+
 export default {
     name: "App",
-    components: {MainPage, MainPanel, PanelInvent, ModalBlock},
+    components: {MainPage, MainPanel, PanelInvent, ModalBlock, PrintModal},
     data(){
         return{
             inventory:{
@@ -89,6 +92,12 @@ export default {
                         this.errorMessage= ''
                     }, 5000)
                 })
+        }
+    },
+    computed:{
+        getCabinets(){
+            const cabinetsNumber = this.inventories.map(obj => obj.cabinet);
+            return [...new Set(cabinetsNumber)];
         }
     }
 

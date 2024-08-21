@@ -12,7 +12,7 @@
                 </div>
                 <div class="grid-box2">
                     <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#createInventoryModal">Добавить инвентарь +</button>
-                    <button class="btn btn-light">Печать</button>
+                    <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#printModal">Печать</button>
                 </div>
             </div>
         </div>

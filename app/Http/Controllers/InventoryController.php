@@ -56,8 +56,13 @@ class InventoryController extends Controller
         } else{
             return response()->json('Инвентарь ранее был удален', 401);
         }
-
-
+    }
+    public function get_qrs(Request $request){
+        $inventories_for_cabs = Inventory::query()->whereIn('cabinet', $request->cabinets)->pluck('src_qrcode');
+        if ($inventories_for_cabs){
+            return response()->json($inventories_for_cabs, 200);
+        }
+        return response()->json('Данные не найдены', 404);
     }
 }
 
