@@ -27,23 +27,23 @@
 
 <script>
 import { ref } from 'vue';
-import { generatePdf } from './pdfGenerator';
+
 
 export default {
     name: "PrintModal",
     props:{
         cabinets: Array
     },
-    data(){
-        return{
-            selectCabinets:[]
-        }
-    },
-    methods:{
-
-    },
+    // data(){
+    //     return{
+    //         selectCabinets:[]
+    //     }
+    // },
     setup(){
-
+        const selectCabinets = ref([]);
+        return{
+            selectCabinets
+        }
     }
 }
 </script>
