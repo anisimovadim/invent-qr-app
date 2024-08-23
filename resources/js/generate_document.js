@@ -1,37 +1,49 @@
-const fs = require('fs');
-const { PDFDocument, rgb, StandardFonts } = require('pdf-lib');
+import { PDFDocument, StandardFonts } from 'pdf-lib';
 
-// Массив объектов с путями до изображений
-const data = [
-    { imagePath: 'public/storage/images/1023013333.png' },
-    { imagePath: 'public/storage/images/1023013412.png' },
-    // Добавьте больше объектов по необходимости
-];
-
-// Функция для генерации PDF документа
-async function generatePdfDocument(data) {
+export async function generatePdf(data) {
     const pdfDoc = await PDFDocument.create();
     const page = pdfDoc.addPage([600, 800]);
     const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
 
-    let y = 750;
+    const imageWidth = 120;
+    const imageHeight = 120;
+    const marginX = 50;
+    const marginY = 50;
+    const maxImagesPerRow = Math.floor((page.getWidth() - 2 * marginX) / imageWidth);
+
+    let x = marginX;
+    let y = page.getHeight() - marginY - imageHeight;
 
     for (const item of data) {
-        const imageBytes = fs.readFileSync(item.imagePath);
+        const imageBytes = await fetch(item).then(res => res.arrayBuffer());
         const image = await pdfDoc.embedPng(imageBytes);
 
+        // Проверка, нужно ли переносить изображение на новую строку
+        if (x + imageWidth > page.getWidth() - marginX) {
+            x = marginX;
+            y -= imageHeight + marginY;
+
+            // Проверка, нужно ли переносить изображение на новую страницу
+            if (y < marginY) {
+                y = page.getHeight() - marginY - imageHeight;
+                pdfDoc.addPage([600, 800]);
+            }
+        }
+
         page.drawImage(image, {
-            x: 50,
+            x: x,
             y: y,
-            width: 100,
-            height: 100,
+            width: imageWidth,
+            height: imageHeight,
         });
 
-        y -= 120; // Смещение для следующего изображения
+        x += imageWidth + marginX;
     }
 
     const pdfBytes = await pdfDoc.save();
-    fs.writeFileSync('output.pdf', pdfBytes);
-}
+    const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+    const url = URL.createObjectURL(blob);
 
-generatePdfDocument(data);
+    // Открываем PDF в новой вкладке
+    window.open(url, '_blank');
+}

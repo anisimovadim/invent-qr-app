@@ -45,6 +45,8 @@ class InventoryController extends Controller
         $inventory->status = $status;
         $inventory->cabinet = $request->cabinet;
         $inventory->src_qrcode = 'storage/images/'.$request->number_invent.'.png';
+        $inventory->whome = $request->whome;
+        $inventory->number_building = $request->number_building;
         $inventory->save();
         return response()->json('Инвентарь успешно добавлен!', 200);
     }

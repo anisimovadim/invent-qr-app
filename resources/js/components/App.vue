@@ -33,7 +33,9 @@ export default {
                 model:'',
                 character:'',
                 status:'no_select',
-                cabinet:''
+                cabinet:'',
+                whome:'',
+                number_building:'',
             },
             success:'',
             errorMessage:'',

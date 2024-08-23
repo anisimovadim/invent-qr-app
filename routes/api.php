@@ -21,4 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/inventories', [\App\Http\Controllers\InventoryController::class, 'show']);
 Route::post('/create/inventory', [\App\Http\Controllers\InventoryController::class, 'create']);
 Route::post('/delete/inventory', [\App\Http\Controllers\InventoryController::class, 'delete']);
-Route::get('/inventories/qr', [\App\Http\Controllers\InventoryController::class, 'get_qrs']);
+Route::post('/inventories/qr', [\App\Http\Controllers\InventoryController::class, 'get_qrs']);

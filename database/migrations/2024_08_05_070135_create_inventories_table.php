@@ -16,10 +16,12 @@ return new class extends Migration
             $table->string('model');
             $table->string('type');
             $table->integer('number_invent')->unique();
-            $table->integer('cabinet');
-            $table->text('character');
+            $table->integer('cabinet')->nullable();
+            $table->text('character')->nullable();
             $table->text('status');
             $table->string('src_qrcode');
+            $table->string('whome')->nullable();
+            $table->integer('number_building')->nullable();
             $table->timestamps();
         });
     }

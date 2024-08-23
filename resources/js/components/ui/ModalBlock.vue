@@ -22,7 +22,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="character" class="form-label">Описание инвентаря</label>
-                            <textarea name="character" id="character" required v-model="inventory.character" cols="30" rows="5" class="form-control"></textarea>
+                            <textarea name="character" id="character" v-model="inventory.character" cols="30" rows="5" class="form-control"></textarea>
                         </div>
                         <div class="mb-3">
                             <select name="status" id="status" class="form-select" v-model="inventory.status">
@@ -32,8 +32,16 @@
                             </select>
                         </div>
                         <div class="mb-3">
+                            <label for="cabinet" class="form-label">Укажите номер здания школы</label>
+                            <input type="number" placeholder="1 или 2" v-model="inventory.number_building" id="cabinet" class="form-control">
+                        </div>
+                        <div class="mb-3">
                             <label for="cabinet" class="form-label">Укажите кабинет для выдачи</label>
-                            <input type="text" placeholder="Например: 220 или оставьте пустым" v-model="inventory.cabinet" id="cabinet" class="form-control">
+                            <input type="number" placeholder="Например: 220 или оставьте пустым" v-model="inventory.cabinet" id="cabinet" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label for="cabinet" class="form-label">Выдается кому</label>
+                            <input type="text" placeholder="Иванов И.И." v-model="inventory.whome" id="cabinet" class="form-control">
                         </div>
                     </div>
                     <div class="modal-footer">

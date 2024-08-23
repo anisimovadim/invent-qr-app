@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-dark w-100">Распечатать</button>
+                    <button type="button" class="btn btn-dark w-100" @click="handlePrint">Распечатать</button>
                 </div>
             </div>
         </div>
@@ -27,22 +27,39 @@
 
 <script>
 import { ref } from 'vue';
-
-
+import {generatePdf} from "../../generate_document.js";
+import axios from "axios";
 export default {
     name: "PrintModal",
     props:{
         cabinets: Array
     },
-    // data(){
-    //     return{
-    //         selectCabinets:[]
-    //     }
-    // },
     setup(){
         const selectCabinets = ref([]);
+        const data = ref([]);
+
+        const getQrCodes = async () => {
+            try {
+                const response = await axios.post('/api/inventories/qr', {cabinets: selectCabinets.value});
+                data.value = response.data;
+                console.log(response.data);
+            }
+            catch (e){
+                console.error(e);
+            }
+            finally {
+                await generatePdf(data.value)
+            }
+        }
+
+        const handlePrint = () => {
+            console.log('clickPront')
+            getQrCodes();
+        }
+
         return{
-            selectCabinets
+            selectCabinets,
+            handlePrint
         }
     }
 }
